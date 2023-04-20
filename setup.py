@@ -1,12 +1,26 @@
-from setuptools import setup
+from setuptools import setup, find_packages
 
 setup(
-    name='kaggle_util',
-    version='1.0',
-    packages=['kaggle_utility'],
+    name='kaggle-util',
+    version='0.1.0',
+    author='Satya Pati',
+    author_email='iamsatyapati@gmail.com',
+    description='A utility for working with Kaggle competitions.',
+    url='https://github.com/neural-navigator/kaggle_utility',
+    packages=find_packages(),
     entry_points={
         'console_scripts': [
-            'kaggle-util = kaggle_utility.kaggle_util:main'
+            'kaggle-util=kaggle_util:main'
         ]
-    }
+    },
+    install_requires=[
+        'kaggle>=1.5.12',
+        'python-dotenv>=0.19.1',
+        'python-decouple>=3.4'
+    ],
+    classifiers=[
+        'Programming Language :: Python :: 3',
+        'License :: OSI Approved :: MIT License',
+        'Operating System :: OS Independent',
+    ],
 )
