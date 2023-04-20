@@ -3,7 +3,7 @@ import constants
 import kaggle
 
 
-def publish_notebook_to_kaggle(notebook_path, title, description, dataset):
+def publish_notebook_to_kaggle(notebook_path: str, title: str, description: str, dataset: str):
     """
     Publishes a Jupyter notebook to Kaggle using the Kaggle API.
 

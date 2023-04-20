@@ -1,12 +1,11 @@
 import os
-import constants
 
 import kaggle
-
 import kaggle.api
+import typer
 
 
-def download_data(dataset_name, target_dir):
+def download_data(dataset_name: str, target_dir: str):
     """
     Downloads a dataset from Kaggle using the Kaggle API.
 

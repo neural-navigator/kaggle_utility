@@ -1,8 +1,13 @@
-import os
-from decouple import config
+DIRECTORIES = ['dataset', 'src', 'docs', 'configs', 'notebooks', 'tests', 'models'
+               'datasets/raw', 'datasets/interim', 'datasets/processed', 'dataset/submissions']
 
-KAGGLE_USERNAME = config("KAGGLE_USERNAME")
-KAGGLE_API_KEY = config("KAGGLE_API_KEY")
+FILES = ['src/__init__.py', 'src/kaggle_util.py']
 
-os.environ['KAGGLE_USERNAME'] = KAGGLE_USERNAME
-os.environ['KAGGLE_KEY'] = KAGGLE_API_KEY
+MAIN_FILE_TEXT = """
+# Hello World
+
+def main():
+    ''' print hello world '''
+    print("Hello World!")
+
+"""
