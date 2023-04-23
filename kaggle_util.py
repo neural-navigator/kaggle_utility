@@ -30,7 +30,9 @@ def main():
 
     # Subparser for submitting a result
     submit_parser = subparsers.add_parser("submit_prediction", help="Submit a Kaggle competition result")
+    submit_parser.add_argument("competition_name", type=str, help="competition name")
     submit_parser.add_argument("prediction_file", type=str, help="prediction file")
+    submit_parser.add_argument("message", type=str, default='', help="message")
 
     # Subparser for viewing the leaderboard
     leaderboard_parser = subparsers.add_parser("leaderboard", help="View the leaderboard for a Kaggle competition")
@@ -52,7 +54,7 @@ def main():
         publish_notebook(args.notebook_path, args.title, args.competition_name, args.kernel_type)
     elif args.command == "submit_prediction":
         from submit_result import submit_result
-        submit_result(args.competition_name, args.prediciton_file)
+        submit_result(args.competition_name, args.prediction_file, args.message)
     elif args.command == "leaderboard":
         from view_leaderboard import get_leaderboard
         get_leaderboard(args.competition_name)
