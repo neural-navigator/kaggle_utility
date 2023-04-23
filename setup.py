@@ -1,7 +1,7 @@
 from setuptools import setup, find_packages
 
 setup(
-    name='kaggle-util',
+    name='kaggle_util',
     version='0.1.0',
     author='Satya Pati',
     author_email='iamsatyapati@gmail.com',
@@ -10,13 +10,11 @@ setup(
     packages=find_packages(),
     entry_points={
         'console_scripts': [
-            'kaggle-util=kaggle_util:main'
+            'kaggle_util=kaggle_util:main'
         ]
     },
     install_requires=[
-        'kaggle>=1.5.12',
-        'python-dotenv>=0.19.1',
-        'python-decouple>=3.4'
+        'kaggle>=1.5.12'
     ],
     classifiers=[
         'Programming Language :: Python :: 3',

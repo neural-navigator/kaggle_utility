@@ -1,5 +1,6 @@
+import json
 import os
-import typer
+import pickle
 
 
 class KaggleUser:
@@ -13,12 +14,19 @@ class KaggleUser:
         return cls._instance
 
 
-def set_kaggle(kaggle_username: str, kaggle_api_token: str, competition_name: str):
+def set_kaggle(conf_json: str, competition_name: str):
+    os.mkdir('.cache')
     kaggle_user = KaggleUser()
-    kaggle_user.username = kaggle_username
-    kaggle_user.api_key = kaggle_api_token
     kaggle_user.competition = competition_name
 
-    os.environ['KAGGLE_USERNAME'] = kaggle_user.username
-    os.environ['KAGGLE_KEY'] = kaggle_user.api_key
+    with open(os.path.abspath(conf_json), 'r') as file:
+        data = json.load(file)
 
+    kaggle_user.username = data['username']
+    kaggle_user.api_key = data['key']
+    kaggle_user.conf_json = conf_json
+
+    # open the file for reading
+    with open('.cache/conf.pkl', 'wb') as f:
+        # deserialize the object from the file
+        pickle.dump(data, f)

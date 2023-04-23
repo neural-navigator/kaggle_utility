@@ -1,4 +1,5 @@
 import kaggle
+from kaggle.api.kaggle_api_extended import KaggleApi
 
 
 def submit_result(competition_name, file_path, message):
@@ -14,12 +15,12 @@ def submit_result(competition_name, file_path, message):
         None
     """
     # Authenticate with the Kaggle API
-    kaggle.api.authenticate()
+    try:
+        kaggle_api = KaggleApi()
+        kaggle_api.authenticate()
 
-    # Initialize a Kaggle competition client
-    competition = kaggle.api.competition_submissions(competition_name)
-
-    # Submit the results file to the Kaggle competition
-    competition.submit(file_path, message)
-
-    print(f"Result submitted successfully to competition '{competition_name}'!")
+        # Initialize a Kaggle competition client
+        kaggle_api.competition_submit(file_path, message, competition_name, quiet=False)
+        print(f"Result submitted successfully to competition '{competition_name}'!")
+    except Exception as e:
+        print(e)
